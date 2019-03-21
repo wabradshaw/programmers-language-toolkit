@@ -12,5 +12,16 @@
     <groupId>com.wabradshaw.plt</groupId>
     <artifactId>core</artifactId>
 
+    <properties>
+        <junit.version>5.3.1</junit.version>
+    </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>
