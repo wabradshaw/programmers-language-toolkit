@@ -1,6 +1,6 @@
 package com.wabradshaw.plt.learning.determiners.data;
 
-import com.wabradshaw.ptl.learning.determiners.data.AnDataSetBuilder;
+import com.wabradshaw.plt.learning.determiners.data.AnDataSetBuilder;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * A set of tests for the {@link com.wabradshaw.ptl.learning.determiners.data.AnDataSetBuilder}
+ * A set of tests for the {@link com.wabradshaw.plt.learning.determiners.data.AnDataSetBuilder}
  */
 class AnDataSetBuilderTest {
 
