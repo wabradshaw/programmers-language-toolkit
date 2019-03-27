@@ -24,6 +24,7 @@ import java.util.Random;
  */
 public class AnDataSetBuilder {
 
+    private static final int OVERSAMPLING_RATIO = 3;
     private Random rng = new Random();
 
     /**
@@ -75,7 +76,7 @@ public class AnDataSetBuilder {
                     current.add(nextA);
                     nextA = as.hasNext() ? new UsageCount(as.next(), false) : null;
                 } else {
-                    fileWriters[rng.nextInt(datasets)].write(current.toString());
+                    write(current, fileWriters, datasets);
                     current = nextA;
                 }
             } else {
@@ -83,18 +84,28 @@ public class AnDataSetBuilder {
                     current.add(nextAn);
                     nextAn = ans.hasNext() ? new UsageCount(ans.next(), true) : null;
                 } else {
-                    fileWriters[rng.nextInt(datasets)].write(current.toString());
+                    write(current, fileWriters, datasets);
                     current = nextAn;
                 }
             }
         }
 
         if(current != null){
-            fileWriters[rng.nextInt(datasets)].write(current.toString());
+            write(current, fileWriters, datasets);
+
         }
 
         for (BufferedWriter fileWriter : fileWriters) {
             fileWriter.close();
+        }
+    }
+
+    private void write(UsageCount count, BufferedWriter[] fileWriters, int datasets) throws IOException {
+        fileWriters[rng.nextInt(datasets)].write(count.toString());
+        for(int i = 0; i < OVERSAMPLING_RATIO; i++){
+            if(rng.nextDouble() < count.getRatio()) {
+                fileWriters[rng.nextInt(datasets)].write(count.toString());
+            }
         }
     }
 
@@ -136,9 +147,13 @@ public class AnDataSetBuilder {
             return candidate == null || this.word.compareTo(candidate.word) < 0;
         }
 
+        double getRatio(){
+            return anCount * 1.0 / (aCount + anCount);
+        }
+
         @Override
         public String toString(){
-            return word + "\t" + (anCount * 1.0 / (aCount + anCount)) + "\n";
+            return word + "\t" + getRatio() + "\n";
         }
     }
 }
