@@ -13,7 +13,8 @@ package com.wabradshaw.plt.determiners;
  * All configuration options are optional, sensible defaults will be used if they are not set.
  * </p>
  * <p>
- * Configuration methods are fluent, making it easy to chain configuration together. These chjaings
+ * Configuration methods are fluent, making it easy to chain configuration together. These chains should be finished by
+ * calling {@link #build()}.
  * </p>
  */
 public class DeterminerServiceBuilder {
