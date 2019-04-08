@@ -25,6 +25,6 @@ public class DeterminerServiceBuilder {
      * @return A {@link DeterminerService} using the supplied configuration options.
      */
     public DeterminerService build(){
-        return null;
+        return new DeterminerService();
     }
 }
