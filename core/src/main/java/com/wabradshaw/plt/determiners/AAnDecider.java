@@ -3,7 +3,7 @@ package com.wabradshaw.plt.determiners;
 /**
  * <p>
  * An AAnDecider chooses whether or not a string would be better represented with "a" or "an". This class is designed
- * for internal use only. You probably want the DeterminerService.
+ * for internal use only. You probably want the {@link DeterminerService}.
  * </p>
  * <p>
  * In general, decisions are made by comparing the start of the word with a trie based model of whether that start
