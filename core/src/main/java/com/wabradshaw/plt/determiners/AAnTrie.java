@@ -47,7 +47,8 @@ class AAnTrie {
      * Finds the best determiner for the remainder of a word. Done by checking to see if there is a child node better
      * suited to making the decision. If so, the decision is delegated, otherwise this node's determiner is used.
      *
-     * @param iterator A CharacterIterator that has just produced the letter this trie represents.
+     * @param iterator A CharacterIterator that has just passed the letter this trie represents. I.e. getting the
+     *                 calling CharacterIterator.current() will return the letter after the one this trie represents.
      * @return A determiner suited to the input word.
      */
     String chooseDeterminer(CharacterIterator iterator) {
