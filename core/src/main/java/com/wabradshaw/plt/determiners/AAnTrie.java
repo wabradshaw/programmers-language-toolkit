@@ -51,7 +51,17 @@ class AAnTrie {
      * @return A determiner suited to the input word.
      */
     String chooseDeterminer(CharacterIterator iterator) {
-        return null;
+        if(this.isFinal()){
+            return this.determiner;
+        } else {
+            AAnTrie matchedChild = this.children.get(iterator.current());
+            if(matchedChild == null){
+                return this.determiner;
+            } else {
+                iterator.next();
+                return matchedChild.chooseDeterminer(iterator);
+            }
+        }
     }
 
     /**
