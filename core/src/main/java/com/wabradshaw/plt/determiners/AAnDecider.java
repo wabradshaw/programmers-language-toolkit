@@ -1,5 +1,6 @@
 package com.wabradshaw.plt.determiners;
 
+import java.text.StringCharacterIterator;
 import java.util.Map;
 
 /**
@@ -36,8 +37,9 @@ class AAnDecider {
 
     /**
      * <p>
-     * Chooses whether or not a string would be better represented with "a" or "an". Defaults to "a" for null or the
-     * empty string.
+     * Chooses whether or not a string would be better represented with "a" or "an". If the word is present in the
+     * user words that determiner will be used, otherwise the aAnModel will be used. Defaults to "a" for null or the
+     * empty string (unless they are in the user words).
      *</p>
      * <p>
      * All decisions are case sensitive. Capitalisation can change pronunciation, and as such changes which determiner
@@ -46,7 +48,13 @@ class AAnDecider {
      * @param word The word (or series of words) being referenced. Case sensitive.
      * @return "a" or "an"
      */
-    String chooseAAn(String word){
-        return null;
+    String chooseAAn(String word) {
+        if(this.userWords.containsKey(word)){
+            return this.userWords.get(word);
+        } else if (word == null || word.isEmpty()){
+            return "a";
+        } else {
+            return this.aAnModel.chooseDeterminer(new StringCharacterIterator(word));
+        }
     }
 }
